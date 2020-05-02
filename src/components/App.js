@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import "./App.css";
+import Main from "./Main";
+import s from "./App.css";
 class App extends Component {
   render() {
     return (
       <div>
-        <h1>Hello from react</h1>
+        <h1 className={s.header}>Hello from react and express</h1>
+        <Main />
       </div>
     );
   }
