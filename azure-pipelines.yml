@@ -1,13 +1,4 @@
 # Node.js React Web App to Linux on Azure
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial (33968570-353c-40dc-b03c-b18ba1d4e929)'
-    appType: 'webApp'
-    WebAppName: 'ReactExpressApp'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    ScriptType: 'Inline Script'
-    InlineScript: 'node app.js'
 # Build a Node.js React app and deploy it to Azure as a Linux web app.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
