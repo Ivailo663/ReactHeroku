@@ -1,10 +1,23 @@
 import React, { Component } from "react";
 
 class App extends Component {
+  state = {
+    prod: "",
+    dev: "http://localhost:3002",
+  };
+  callingRes = () => {
+    fetch(`${this.state.dev}/asdf`)
+      .then((res) => res.json())
+      .then((response) => {
+        console.log(response);
+      });
+    console.log("doing something");
+  };
   render() {
     return (
       <div>
         <h1>Hello from react</h1>
+        <button onClick={this.callingRes}>Click</button>
       </div>
     );
   }

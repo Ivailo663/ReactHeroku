@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "start": "node app.js",
+    "heroku-postbuild": "npm run build",
+    "build": "webpack --mode production",
+    "start-client": "webpack-dev-server --mode development --open"
   },
   "keywords": [],
   "author": "",
