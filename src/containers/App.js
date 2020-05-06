@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cars from "../components/Cars/Cars";
 
 class App extends Component {
   state = {
@@ -7,6 +8,7 @@ class App extends Component {
     cars: [],
   };
   callingRes = () => {};
+
   componentDidMount() {
     fetch(`${this.state.dev}/all`)
       .then((res) => res.json())
@@ -16,21 +18,11 @@ class App extends Component {
       });
   }
   render() {
-    const cars = this.state.cars.map((el) => {
-      return (
-        <ul key={el._id}>
-          <li>{el.brand}</li>
-          <li>{el.model}</li>
-          <li>{el.price}</li>
-          <li>{el.km}</li>
-        </ul>
-      );
-    });
     return (
       <div>
         <h1>Hello from react</h1>
         <button onClick={this.callingRes}>Click</button>
-        {cars}
+        <Cars cars={this.state.cars} />
       </div>
     );
   }
