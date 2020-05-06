@@ -10,7 +10,7 @@ class App extends Component {
   callingRes = () => {};
 
   componentDidMount() {
-    fetch(`${this.state.dev}/all`)
+    fetch(`${this.state.prod}/all`)
       .then((res) => res.json())
       .then((response) => {
         this.setState({ cars: response.data.cars });
