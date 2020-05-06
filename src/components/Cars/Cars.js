@@ -1,5 +1,6 @@
 import React from "react";
 import Car from "./Car/Car";
+import s from './Cars.css'
 
 const cars = (props) => {
   const cars = props.cars.map((el) => {
