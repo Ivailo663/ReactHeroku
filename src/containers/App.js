@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import Cars from "../components/Cars/Cars";
+import Navbar from '../components/navbar/Navbar'
+import Gallery from '../components/Gallery/Gallery'
+import Auxiliary from '../hoc/Auxiliary'
+import s from './App.css'
 
 class App extends Component {
   state = {
@@ -10,7 +14,7 @@ class App extends Component {
   callingRes = () => {};
 
   componentDidMount() {
-    fetch(`${this.state.prod}/all`)
+    fetch(`${this.state.prod }/all`)
       .then((res) => res.json())
       .then((response) => {
         this.setState({ cars: response.data.cars });
@@ -19,11 +23,11 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>Hello from react</h1>
-        <button onClick={this.callingRes}>Click</button>
+      <Auxiliary>
+        <Navbar/>
         <Cars cars={this.state.cars} />
-      </div>
+        <Gallery/>  
+      </Auxiliary>
     );
   }
 }

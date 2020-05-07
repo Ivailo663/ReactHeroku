@@ -5,15 +5,20 @@ import s from './Cars.css'
 const cars = (props) => {
   const cars = props.cars.map((el) => {
     return (
-      <Car key={el._id}>
-        <li>{el.brand}</li>
-        <li>{el.model}</li>
-        <li>{el.price}</li>
-        <li>{el.km}</li>
-      </Car>
+  
+        <Car key={el._id}>
+          <li className={s.item}>{el.brand}</li>
+          <li >{el.model}</li>
+          <li>{el.price}</li>
+          <li>{el.km}</li>
+        </Car>
+
+       
+
+     
     );
   });
-  return <div>{cars}</div>;
+  return <div className={s.cars}>{cars}</div>;
 };
 
 export default cars;
