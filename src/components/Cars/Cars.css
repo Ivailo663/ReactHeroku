@@ -1,11 +1,10 @@
-.cars{
-    background-color:rgb(85, 85, 214);
-    padding:5rem 0;
-    position: relative;
-    z-index:10;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10vw), 0 100%);
-    margin-bottom: -10vw;
-
+.cars {
+  background-color: #fff;
+  padding: 5rem 0;
+  position: relative;
+  z-index: 10;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10vw), 0 100%);
+  margin-bottom: -10vw;
 }
 
 /* .cars::after,.cars::before{
@@ -24,6 +23,6 @@
     right:50%;
     transform:skew(0, 20deg);
 } */
-.item{
-    color:red;
+.item {
+  color: red;
 }

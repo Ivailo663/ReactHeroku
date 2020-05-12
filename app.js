@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const Car = require("./server/model");
+const bodyParser = require("body-parser");
+const carsRoutes = require("./server/routes/carRoutes");
+const Car = require("./server/models/model");
 dotenv.config({ path: "./config.env" });
 
 const PORT = process.env.PORT || 3002;
@@ -10,6 +12,7 @@ const PORT = process.env.PORT || 3002;
 const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.USER_PASS);
 
 app.use(express.json());
+app.use(bodyParser.json());
 
 mongoose
   .connect(DB, {
@@ -25,19 +28,19 @@ mongoose
     console.log(err);
   });
 
-// const car = new Car({
-//   brand: "BWM",
-//   model: "X5",
-//   price: 4200,
-//   km: 240000,
-// });
+const car = new Car({
+  brand: "Opel",
+  model: "Insignia",
+  price: 7200,
+  km: 10000,
+});
 
-// car
-//   .save()
-//   .then((doc) => {
-//     console.log(doc);
-//   })
-//   .catch((err) => console.log(err));
+car
+  .save()
+  .then((doc) => {
+    console.log(doc);
+  })
+  .catch((err) => console.log(err));
 
 app.use(express.static("./dist", { index: "index.html" }));
 
@@ -47,26 +50,6 @@ app.use((req, res, next) => {
   return next();
 });
 
-app.get("/asdf", async (req, res) => {
-  const newCar = await Car.create(req.body);
-
-  res.status(200).json({
-    message: "message from the server!",
-    data: {
-      data: newCar,
-    },
-  });
-});
-
-app.get("/all", async (req, res) => {
-  const cars = await Car.find();
-
-  res.status(200).json({
-    status: "success",
-    data: {
-      cars,
-    },
-  });
-});
+app.use("/all", carsRoutes);
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
