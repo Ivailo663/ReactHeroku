@@ -5,6 +5,7 @@ import Gallery from "../components/Gallery/Gallery";
 import Auxiliary from "../hoc/Auxiliary";
 import axios from "axios";
 import styleContext from "../context/context";
+import Registration from "../containers/Form/Registration";
 import s from "./App.css";
 
 class App extends Component {
@@ -35,8 +36,8 @@ class App extends Component {
         <styleContext.Provider value={this.state.color}>
           <Cars cars={this.state.cars} />
         </styleContext.Provider>
-
         <Gallery />
+        <Registration />
       </Auxiliary>
     );
   }
