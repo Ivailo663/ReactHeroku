@@ -3,60 +3,35 @@ import React, { Component } from "react";
 
 class Registration extends Component {
   state = {
-    formControls: {
-      email: {
-        value: "",
-      },
-      name: {
-        value: "",
-      },
-      password: {
-        value: "",
-      },
+    form: {
+      email: "",
+      name: "",
+      password: "",
     },
   };
 
   changeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const { form } = this.state;
+    form[event.target.name] = [event.target.value];
 
     this.setState({
-      formControls: {
-        ...this.state.formControls,
-        [name]: {
-          ...this.state.formControls[name],
-          value,
-        },
-      },
+      form: form,
     });
   };
-
+  log = (e) => {
+    e.preventDefault();
+    console.log(this.state.form);
+  };
   render() {
     return (
       <form>
-        <p>{this.state.formControls.email.value}</p>
-        <p>{this.state.formControls.name.value}</p>
+        <p>{this.state.form.email} email</p>
+        <p>{this.state.form.name} password</p>
 
-        <input
-          type="email"
-          name="email"
-          value={this.state.formControls.email.value}
-          onChange={this.changeHandler}
-        />
-
-        <input
-          type="text"
-          name="name"
-          value={this.state.formControls.name.value}
-          onChange={this.changeHandler}
-        />
-
-        <input
-          type="password"
-          name="password"
-          value={this.state.formControls.password.value}
-          onChange={this.changeHandler}
-        />
+        <input type="text" name="email" onChange={this.changeHandler} />
+        <input type="text" name="name" onChange={this.changeHandler} />
+        <input type="password" name="password" onChange={this.changeHandler} />
+        <button onClick={this.log}>click</button>
       </form>
     );
   }
